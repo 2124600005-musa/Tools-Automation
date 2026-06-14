@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")"
+
+echo "Starting Oushh Telegram Deep Bot..."
+
+if [ ! -f config.py ] && [ -f config.example.py ]; then
+  cp config.example.py config.py
+  echo "[OK] config.py dibuat dari config.example.py"
+  echo "Edit config.py isi BOT_TOKEN dan CHAT_ID, lalu jalankan script ini lagi."
+  exit 0
+fi
+
+if [ -x ".venv/bin/python" ]; then
+  PYTHON_BIN=".venv/bin/python"
+else
+  PYTHON_BIN="${PYTHON_BIN:-python3}"
+  if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+    PYTHON_BIN="python"
+  fi
+fi
+
+exec "$PYTHON_BIN" telegram_deep_bot.py

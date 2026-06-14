@@ -334,23 +334,37 @@ https://drive.google.com/file/d/12F5cYBm8b5KVKkKmsa_1Yenfrqvcv5IG/view?usp=drive
 
 This tool is for authorized security testing only. You are responsible for how you use it. Do not scan targets without permission.
 
-
 ## VPS / Fresh Server Prerequisites
 
 If you install Oushh on a fresh VPS, install the basic system packages first:
 
-`ash
+```bash
 sudo apt update
 sudo apt install -y git python3 python3-venv python3-pip golang unzip curl wget
-`
+```
 
-These packages are used for cloning the repository, running the Python Telegram bot, creating the local .venv, installing Go-based recon tools, and downloading/extracting dependencies.
+What these packages are for:
+
+- `git` — clone the GitHub repository.
+- `python3`, `python3-venv`, `python3-pip` — run the Telegram bot and create local `.venv`.
+- `golang` — install Go-based recon tools.
+- `unzip`, `curl`, `wget` — download and extract dependencies.
 
 After that, continue with the normal setup:
 
-`ash
+```bash
 git clone https://github.com/2124600005-musa/Tools-Automation.git
 cd Tools-Automation
 chmod +x setup.sh run_deep_bot.sh
 ./setup.sh
-`
+```
+
+Then edit your config and start the bot:
+
+```bash
+nano config.py
+./run_deep_bot.sh
+```
+
+---
+
